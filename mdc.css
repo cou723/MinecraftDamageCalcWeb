@@ -100,9 +100,6 @@ button:active {
    animation-duration: 1s;
 }
 
-.result button:focus {
-
-}
 
 
 @media screen and (min-width: 767px) {
