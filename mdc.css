@@ -54,7 +54,7 @@ button:active {
 
 .offence {
    background-color: #FADCDC;
-   width: 80%;
+   width: 50%;
 }
 
 .offence h2{
@@ -72,6 +72,7 @@ button:active {
 
 .defence {
    background-color: #E3EFFD;
+   width: 50%;
 }
 
 .defence h2{
@@ -108,7 +109,7 @@ button:active {
    }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 721px) {
    .calc{
       flex-direction: column;
    }
