@@ -21,8 +21,18 @@ button {
    text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
 }
 
+button:hover{
+   animation-name: fadeIn;
+   animation-duration: 0.5s;
+}
+
 button:focus {
    outline: none;
+}
+
+button:active {
+   animation-name: fadeIn;
+   opacity: 0.5;
 }
 
 .calc {
@@ -62,6 +72,11 @@ button:focus {
    border-bottom-color: #969624;
 }
 
+.result_area{
+   animation-name: fadeIn;
+   animation-duration: 1s;
+}
+
 
 @media screen and (min-width: 767px) {
    .calc{
@@ -76,5 +91,14 @@ button:focus {
    .offence , .defence, .result{
       margin-right: 0px;
       width: auto;
+   }
+}
+
+@keyframes fadeIn{
+   from{
+      opacity: 20%;
+   }
+   to{
+      opacity: 90%;
    }
 }
