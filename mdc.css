@@ -61,6 +61,15 @@ button:active {
    border-bottom-color: #743838;
 }
 
+.offence input, .offence select{
+   border: solid 2px #743838;
+}
+
+.offence input:focus, .offence select:focus{
+   outline: none;
+   border: solid 2px #fafafa;
+}
+
 .defence {
    background-color: #E3EFFD;
 }
@@ -69,6 +78,13 @@ button:active {
    border-bottom-color: #36506d;
 }
 
+.defence input, .defence select{
+   border: solid 2px #36506d;
+}
+
+.defence input:focus, .defence select:focus {
+   outline: none;
+   border: solid 2px #fafafa;
 }
 
 .result {
