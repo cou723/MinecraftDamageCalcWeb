@@ -7,23 +7,30 @@ body {
    text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
 }
 
-h2{
+h2 {
    border-bottom: solid 2px;
 }
 
+input, select{
+   font-size: medium;
+}
+
 button {
+   opacity: 0.8;
    padding: 10px;
    font-size: 20px;
    border: double 4px #66653b;
    background-color: #FCFCE6;
    width: 100%;
    color: #66653b;
-   text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
+   text-shadow: 1px 1px 1px rgba(30, 30, 30, 0);
 }
 
 button:hover{
    animation-name: fadeIn;
    animation-duration: 0.5s;
+   opacity: 1;
+   text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
 }
 
 button:focus {
@@ -31,7 +38,6 @@ button:focus {
 }
 
 button:active {
-   animation-name: fadeIn;
    opacity: 0.5;
 }
 
@@ -57,11 +63,12 @@ button:active {
 
 .defence {
    background-color: #E3EFFD;
-   width: 80%;
 }
 
 .defence h2{
    border-bottom-color: #36506d;
+}
+
 }
 
 .result {
@@ -75,6 +82,10 @@ button:active {
 .result_area{
    animation-name: fadeIn;
    animation-duration: 1s;
+}
+
+.result button:focus {
+
 }
 
 
@@ -96,9 +107,9 @@ button:active {
 
 @keyframes fadeIn{
    from{
-      opacity: 20%;
+      text-shadow: 1px 1px 1px rgba(30, 30, 30, 0);
    }
    to{
-      opacity: 90%;
+      text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
    }
 }
