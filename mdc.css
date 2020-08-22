@@ -1,0 +1,80 @@
+html {
+   margin: 8px;
+}
+
+body {
+   color: rgb(45, 45, 45);
+   text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
+}
+
+h2{
+   border-bottom: solid 2px;
+}
+
+button {
+   padding: 10px;
+   font-size: 20px;
+   border: double 4px #66653b;
+   background-color: #FCFCE6;
+   width: 100%;
+   color: #66653b;
+   text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
+}
+
+button:focus {
+   outline: none;
+}
+
+.calc {
+   display: flex;
+}
+
+.offence , .defence , .result {
+   margin-right: 16px;
+   margin-bottom: 16px;
+   padding: 16px;
+   box-shadow: 0 0 8px gray;
+}
+
+.offence {
+   background-color: #FADCDC;
+   width: 80%;
+}
+
+.offence h2{
+   border-bottom-color: #743838;
+}
+
+.defence {
+   background-color: #E3EFFD;
+   width: 80%;
+}
+
+.defence h2{
+   border-bottom-color: #36506d;
+}
+
+.result {
+   background-color: #FCFCE6;
+}
+
+.result h2{
+   border-bottom-color: #969624;
+}
+
+
+@media screen and (min-width: 767px) {
+   .calc{
+      flex-direction: row;
+   }
+}
+
+@media screen and (max-width: 700px) {
+   .calc{
+      flex-direction: column;
+   }
+   .offence , .defence, .result{
+      margin-right: 0px;
+      width: auto;
+   }
+}
