@@ -1,0 +1,40 @@
+.title, .offence, .defence, .result {
+   animation-name: fade-in;
+   animation-duration: 0.5s;
+}
+
+.offence, .defence, .result {
+   animation-name: fade-in-shadow;
+   animation-duration: 0.5s;
+}
+
+body, html {
+   animation-name: none;
+}
+@keyframes fade-in {
+   0% {
+      opacity: 0.5;
+      transform: translateY(10px);
+      text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.1);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0px);
+      text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
+   }
+}
+
+@keyframes fade-in-shadow {
+   0% {
+      opacity: 0.5;
+      transform: translateY(10px);
+      text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.1);
+      box-shadow: 0 0 8px rgba(5, 5, 5, 0.1) ;
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0px);
+      text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
+      box-shadow: 0 0 8px rgba(5, 5, 5, 0.5);
+   }
+}

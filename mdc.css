@@ -7,6 +7,11 @@ body {
    text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
 }
 
+.title>h1, .title>p {
+   margin-top: 8px;
+   margin-bottom: 8px;
+}
+
 h2 {
    border-bottom: solid 2px;
 }
@@ -20,7 +25,6 @@ button {
    padding: 10px;
    font-size: 20px;
    border: double 4px #66653b;
-   background-color: #FCFCE6;
    width: 100%;
    color: #66653b;
    text-shadow: 1px 1px 1px rgba(30, 30, 30, 0);
@@ -49,11 +53,10 @@ button:active {
    margin-right: 16px;
    margin-bottom: 16px;
    padding: 16px;
-   box-shadow: 0 0 8px gray;
+   box-shadow: 0 0 8px rgba(5, 5, 5, 0.5);
 }
 
 .offence {
-   background-color: #FADCDC;
    width: 50%;
 }
 
@@ -71,7 +74,6 @@ button:active {
 }
 
 .defence {
-   background-color: #E3EFFD;
    width: 50%;
 }
 
@@ -89,19 +91,12 @@ button:active {
 }
 
 .result {
-   background-color: #FCFCE6;
+
 }
 
 .result h2{
    border-bottom-color: #969624;
 }
-
-.result_area{
-   animation-name: fadeIn;
-   animation-duration: 1s;
-}
-
-
 
 @media screen and (min-width: 767px) {
    .calc{
@@ -116,14 +111,5 @@ button:active {
    .offence , .defence, .result{
       margin-right: 0px;
       width: auto;
-   }
-}
-
-@keyframes fadeIn{
-   from{
-      text-shadow: 1px 1px 1px rgba(30, 30, 30, 0);
-   }
-   to{
-      text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
    }
 }
