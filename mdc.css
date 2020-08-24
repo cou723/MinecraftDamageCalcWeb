@@ -7,7 +7,7 @@ body {
    text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
 }
 
-.title>h1, .title>p {
+.title h1, .title p {
    margin-top: 8px;
    margin-bottom: 8px;
 }
@@ -17,7 +17,7 @@ h2 {
 }
 
 input, select{
-   font-size: medium;
+   font-size: 18px;
 }
 
 button {
@@ -70,7 +70,7 @@ button:active {
 
 .offence input:focus, .offence select:focus{
    outline: none;
-   border: solid 2px #fafafa;
+   border: solid 2px #ebbebe;
 }
 
 .defence {
@@ -87,7 +87,7 @@ button:active {
 
 .defence input:focus, .defence select:focus {
    outline: none;
-   border: solid 2px #fafafa;
+   border: solid 2px #a6bfdb;
 }
 
 .result {

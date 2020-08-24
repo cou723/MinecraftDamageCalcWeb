@@ -1,21 +1,53 @@
-.title, .offence, .defence, .result {
+.title {
    animation-name: fade-in;
    animation-duration: 0.5s;
+   animation-iteration-count: 1;
 }
 
 .offence, .defence, .result {
    animation-name: fade-in-shadow;
    animation-duration: 0.5s;
+   animation-fill-mode: both;
+   animation-iteration-count: 1;
 }
 
-body, html {
-   animation-name: none;
+input, select {
+   animation-name: fade-in;
+   animation-duration: 0.5s;
+   animation-delay: 0.3s;
+   animation-fill-mode: both;
+   animation-iteration-count: 1;
 }
+
+p {
+   animation-name: fade-in;
+   animation-duration: 0.5s;
+   animation-delay: 0.2s;
+   animation-fill-mode: both;
+   animation-iteration-count: 1;
+}
+
+h2 {
+   animation-name: fade-in-from-side;
+   animation-duration: 0.5s;
+   animation-delay: 0.4s;
+   animation-fill-mode: both;
+   animation-iteration-count: 1;
+}
+
+button {
+   animation-name: fade-in-from-side;
+   animation-duration: 0.5s;
+   animation-delay: 0.4s;
+   animation-fill-mode: both;
+   animation-iteration-count: 1;
+}
+
 @keyframes fade-in {
    0% {
-      opacity: 0.5;
-      transform: translateY(10px);
-      text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      text-shadow: 1px 1px 1px rgba(30, 30, 30, 0);
    }
    100% {
       opacity: 1;
@@ -24,10 +56,23 @@ body, html {
    }
 }
 
+@keyframes fade-in-from-side {
+   0% {
+      opacity: 0;
+      transform: translateX(-20px);
+      text-shadow: 1px 1px 1px rgba(30, 30, 30, 0);
+   }
+   100% {
+      opacity: 1;
+      transform: translateX(0px);
+      text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
+   }
+}
+
 @keyframes fade-in-shadow {
    0% {
-      opacity: 0.5;
-      transform: translateY(10px);
+      opacity: 0;
+      transform: translateY(20px);
       text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.1);
       box-shadow: 0 0 8px rgba(5, 5, 5, 0.1) ;
    }

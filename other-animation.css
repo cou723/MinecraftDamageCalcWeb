@@ -1,0 +1,15 @@
+input:hover, select:hover {
+   animation-name: expan;
+   animation-duration: 0.2s;
+   animation-timing-function: ease-out;
+   font-size: 22px;
+}
+
+@keyframes expan {
+   0% {
+      font-size: 18px;
+   }
+   100% {
+      font-size: 22px;
+   }
+}
