@@ -1,53 +1,36 @@
-input:hover, input:focus {
+input:hover, input:focus, select:hover, select:focus {
+   transform-origin: left center ;
    animation-name: expan;
    animation-duration: 0.1s;
    animation-timing-function: ease-out;
    animation-fill-mode: both;
 }
 
-select:hover, select:focus {
-   animation-name: expan-select;
-   animation-duration: 0.1s;
-   animation-timing-function: ease-out;
-   animation-fill-mode: both;
-}
-
-
 button:hover, button:focus {
+   transform-origin: center;
    animation-name: expan-button;
    animation-duration: 0.1s;
    animation-timing-function: ease-out;
    animation-fill-mode: both;
 }
 
-
 @keyframes expan {
    0% {
-      transform: translateX(0px) scale(1, 1);
+      transform: scale(1, 1);
    }
    100% {
-      transform: translateX(10px) scale(1.15, 1.15);
-   }
-}
-
-@keyframes expan-select {
-   0% {
-      transform: translateX(0px) scale(1, 1);
-   }
-   100% {
-      transform: translateX(20px) scale(1.15, 1.15);
+      transform: scale(1.15, 1.15);
    }
 }
 
 @keyframes expan-button {
    0% {
-      transform: scale(1, 1);
+      transform: scale(0.9, 0.9);
    }
    100% {
-      transform: scale(1, 1.1);
+      transform: scale(1., 1.1);
    }
 }
-
 
 .offence:hover {
    animation-name: offence-box;
