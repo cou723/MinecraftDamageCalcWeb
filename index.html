@@ -8,6 +8,8 @@
    <meta property="og:description" content="Minecraftのダメージ計算が（多分）できるサイトです。" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Minecraft Damege Calc</title>
+   <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+   <link rel="icon" href="favicon.ico" type="image/vnd.microsoft.icon">
    <link rel="stylesheet" href="mdc.css">
    <link rel="stylesheet" href="intro-animation.css">
    <link rel="stylesheet" href="other-animation.css">
@@ -18,10 +20,10 @@
       <p>Minecraftのダメージ計算をします</p>
    </div>
    <div class="calc">
-      <div class="offence">
+      <div class="offence offence-rm-animation">
          <h2>攻撃側</h2>
          <p>武器:<br>
-            <select name="weapon" id="weapon">
+            <select class="rm-animation" name="weapon" id="weapon">
                <option value="wooden_sword">木の剣</option>
                <option value="stone_sword">石の剣</option>
                <option value="iron_sword">鉄の剣</option>
@@ -30,16 +32,16 @@
                <option value="none">素手またはその他</option>
             </select>
          </p>
-         <p>ダメージ増加エンチャントレベル:<br><input type="number" value="0" min="0" max="9999" name="sharpness" id="sharpness"></p>
-         <p>アンデッド特攻エンチャントレベル:<br><input type="number" value="0" min="0" max="9999" name="smite" id="smite"></p>
-         <p>虫特攻エンチャントレベル:<br><input type="number" value="0" min="0" max="9999" name="bane_of_arthropods" id="bane_of_arthropods"></p>
-         <p>攻撃力上昇レベル:<br><input type="number" value="0" min="0" max="9999" name="strength" id="strength"></p>
+         <p>ダメージ増加エンチャントレベル:<br><input class="rm-animation" type="number" value="0" min="0" max="9999" name="sharpness" id="sharpness"></p>
+         <p>アンデッド特攻エンチャントレベル:<br><input class="rm-animation" type="number" value="0" min="0" max="9999" name="smite" id="smite"></p>
+         <p>虫特攻エンチャントレベル:<br><input class="rm-animation" type="number" value="0" min="0" max="9999" name="bane_of_arthropods" id="bane_of_arthropods"></p>
+         <p>攻撃力上昇レベル:<br><input class="rm-animation" type="number" value="0" min="0" max="9999" name="strength" id="strength"></p>
       </div>
-      <div class="defence">
+      <div class="defence defence-rm-animation">
          <h2>防御側</h2>
 
          <p>相手エンティティ: <br>
-            <select name="enemy" id="enemy">
+            <select class="rm-animation" name="enemy" id="enemy">
                <option value="human">プレイヤー</option>
                <option value="zombie">ゾンビ</option>
                <option value="skeleton">スケルトン</option>
@@ -50,9 +52,9 @@
                <option value="cave_spider">毒蜘蛛</option>
             </select>
          </p>
-         <p>耐性レベル:<br><input type="number" value="0" min="0" max="255" name="resistance" id="resistance"></p>
+         <p>耐性レベル:<br><input class="rm-animation" type="number" value="0" min="0" max="255" name="resistance" id="resistance"></p>
          <p>ヘルメット: <br>
-            <select name="helmet" id="helmet">
+            <select class="rm-animation" name="helmet" id="helmet">
                <option value="none">なし</option>
                <option value="leather_helmet">革の帽子</option>
                <option value="chainmail_helmet">チェーンのヘルメット</option>
@@ -62,11 +64,11 @@
             </select>
          </p>
          <p>ダメージ軽減エンチャントレベル:
-            <input name="helmet_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="helmet_protection">
+            <input class="rm-animation" name="helmet_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="helmet_protection">
          </p>
 
          <p>チェストプレート: <br>
-            <select name="chestplate" id="chestplate">
+            <select class="rm-animation" name="chestplate" id="chestplate">
                <option value="none">なし</option>
                <option value="leather_chestplate">革の上着</option>
                <option value="chainmail_chestplate">チェーンのチェストプレート</option>
@@ -76,11 +78,11 @@
             </select>
          </p>
          <p>ダメージ軽減エンチャントレベル:
-            <input name="chestplate_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="chestplate_protection">
+            <input class="rm-animation" name="chestplate_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="chestplate_protection">
          </p>
 
          <p>レギンス: <br>
-            <select name="leggings" id="leggings">
+            <select class="rm-animation" name="leggings" id="leggings">
                <option value="none">なし</option>
                <option value="leather_leggings">革のズボン</option>
                <option value="chainmail_leggings">チェーンのレギンス</option>
@@ -90,11 +92,11 @@
             </select>
          </p>
          <p>ダメージ軽減エンチャントレベル:
-            <input name="leggings_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="leggings_protection">
+            <input class="rm-animation" name="leggings_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="leggings_protection">
          </p>
 
          <p>ブーツ: <br>
-            <select name="boots" id="boots">
+            <select class="rm-animation" name="boots" id="boots">
                <option value="none">なし</option>
                <option value="leather_boots">革のブーツ</option>
                <option value="chainmail_boots">チェーンのブーツ</option>
@@ -104,14 +106,15 @@
             </select>
          </p>
          <p>ダメージ軽減エンチャントレベル:
-            <input name="boots_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="boots_protection">
+            <input class="rm-animation" name="boots_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="boots_protection">
          </p>
       </div>
    </div>
-   <div class="result">
-      <button id="calc">計算する</button>
+   <div class="result result-rm-animation">
+      <button class="rm-animation" id="calc">計算する</button>
       <div id="result_area"></div>
    </div>
    <script src="mdc.js"></script>
+   <script src="intro-animation.js"></script>
 </body>
 </html>

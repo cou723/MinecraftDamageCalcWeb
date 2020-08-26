@@ -1,15 +1,79 @@
-input:hover, select:hover {
+input:hover, select:hover, input:focus, select:focus {
    animation-name: expan;
-   animation-duration: 0.2s;
+   animation-duration: 0.1s;
    animation-timing-function: ease-out;
-   font-size: 22px;
+   animation-fill-mode: both;
+   transform: scale(1.1, 1.1);
 }
+
+button:hover, button:focus {
+   animation-name: expan-button;
+   animation-duration: 0.1s;
+   animation-timing-function: ease-out;
+   animation-fill-mode: both;
+}
+
 
 @keyframes expan {
    0% {
-      font-size: 18px;
+      transform: translateX(0px);
    }
    100% {
-      font-size: 22px;
+      transform: translateX(5px);
+   }
+}
+
+@keyframes expan-button {
+   0% {
+      transform: scale(1, 1);
+   }
+   100% {
+      transform: scale(1, 1.1);
+   }
+}
+
+
+.offence:hover {
+   animation-name: offence-box;
+   animation-duration: 0.5s;
+   animation-fill-mode: both;
+}
+
+.defence:hover {
+   animation-name: defence-box;
+   animation-duration: 0.5s;
+   animation-fill-mode: both;
+}
+
+.result:hover {
+   animation-name: result-box;
+   animation-duration: 0.5s;
+   animation-fill-mode: both;
+}
+
+@keyframes offence-box {
+   0% {
+      background-color: #fafafa;
+   }
+   100% {
+      background-color: hsl(0, 58%, 90%);
+   }
+}
+
+@keyframes defence-box {
+   0% {
+      background-color: #fafafa;
+   }
+   100% {
+      background-color: hsl(212, 58%, 90%);
+   }
+}
+
+@keyframes result-box {
+   0% {
+      background-color: #fafafa;
+   }
+   100% {
+      background-color: hsl(60, 58%, 90%);
    }
 }

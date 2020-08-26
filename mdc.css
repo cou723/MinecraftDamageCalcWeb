@@ -5,6 +5,7 @@ html {
 body {
    color: rgb(45, 45, 45);
    text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
+   background-color: #fafafa;
 }
 
 .title h1, .title p {
@@ -27,14 +28,8 @@ button {
    border: double 4px #66653b;
    width: 100%;
    color: #66653b;
-   text-shadow: 1px 1px 1px rgba(30, 30, 30, 0);
-}
-
-button:hover{
-   animation-name: fadeIn;
-   animation-duration: 0.5s;
-   opacity: 1;
    text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.2);
+   background-color: rgba(0, 0, 0, 0);
 }
 
 button:focus {
@@ -61,11 +56,11 @@ button:active {
 }
 
 .offence h2{
-   border-bottom-color: #743838;
+   border-bottom-color: hsl(0, 35%, 32%);
 }
 
 .offence input, .offence select{
-   border: solid 2px #743838;
+   border: solid 2px hsl(0, 35%, 32%);
 }
 
 .offence input:focus, .offence select:focus{
@@ -78,11 +73,11 @@ button:active {
 }
 
 .defence h2{
-   border-bottom-color: #36506d;
+   border-bottom-color: hsl(212, 35%, 32%);
 }
 
 .defence input, .defence select{
-   border: solid 2px #36506d;
+   border: solid 2px hsl(212, 35%, 32%);
 }
 
 .defence input:focus, .defence select:focus {
@@ -95,7 +90,7 @@ button:active {
 }
 
 .result h2{
-   border-bottom-color: #969624;
+   border-bottom-color: hsl(60, 35%, 32%);
 }
 
 @media screen and (min-width: 767px) {
