@@ -21,6 +21,10 @@ input, select{
    font-size: 18px;
 }
 
+select {
+   width: 80%;
+}
+
 button {
    opacity: 0.8;
    padding: 10px;
@@ -83,10 +87,6 @@ button:active {
 .defence input:focus, .defence select:focus {
    outline: none;
    border: solid 2px #a6bfdb;
-}
-
-.result {
-
 }
 
 .result h2{
