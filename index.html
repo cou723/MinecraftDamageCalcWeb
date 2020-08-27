@@ -1,124 +1,124 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-   <meta charset="UTF-8">
-   <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/article#">
-   <title>Minecraft Damege Calc</title>
-   <meta property="og:title" content="Minecraft-Damage-Calc-Web">
-   <meta property="og:type" content="website">
-   <meta property="og:url" content="https://Minecraft-Damage-Calc-Web.github.io/mdc.html" />
-   <meta property="og:image" content="https://cou01000111.github.io/MinecraftDamageCalcWeb/image/ogp_image.png">
-   <meta property="og:description" content="Minecraftのダメージ計算が（多分）できるサイトです。" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="twitter:card" content="summary_large_image">
+   <head>
+      <meta charset="UTF-8">
+      <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/article#">
+      <title>Minecraft Damege Calc</title>
+      <meta property="og:title" content="Minecraft-Damage-Calc-Web">
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="https://Minecraft-Damage-Calc-Web.github.io/mdc.html" />
+      <meta property="og:image" content="https://cou01000111.github.io/MinecraftDamageCalcWeb/image/ogp_image.png">
+      <meta property="og:description" content="Minecraftのダメージ計算が（多分）できるサイトです。" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="twitter:card" content="summary_large_image">
 
-   <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
-   <link rel="icon" href="./image/favicon.ico" type="image/vnd.microsoft.icon">
-   <link rel="stylesheet" href="mdc.css">
-   <link rel="stylesheet" href="intro-animation.css">
-   <link rel="stylesheet" href="other-animation.css">
-</head>
-<body>
-   <div class="title">
-      <h1>Minecraft Damage Calc</h1>
-      <p>Minecraftのダメージ計算をします</p>
-   </div>
-   <div class="calc">
-      <div class="offence offence-rm-animation">
-         <h2>攻撃側</h2>
-         <p>武器:<br>
-            <select class="rm-animation" name="weapon" id="weapon">
-               <option value="wooden_sword">木の剣</option>
-               <option value="stone_sword">石の剣</option>
-               <option value="iron_sword">鉄の剣</option>
-               <option value="goolden_sword">金の剣</option>
-               <option value="diamond_sword">ダイヤの剣</option>
-               <option value="none">素手またはその他</option>
-            </select>
-         </p>
-         <p>ダメージ増加エンチャントレベル:<br><input class="rm-animation" type="number" value="0" min="0" max="9999" name="sharpness" id="sharpness"></p>
-         <p>アンデッド特攻エンチャントレベル:<br><input class="rm-animation" type="number" value="0" min="0" max="9999" name="smite" id="smite"></p>
-         <p>虫特攻エンチャントレベル:<br><input class="rm-animation" type="number" value="0" min="0" max="9999" name="bane_of_arthropods" id="bane_of_arthropods"></p>
-         <p>攻撃力上昇レベル:<br><input class="rm-animation" type="number" value="0" min="0" max="9999" name="strength" id="strength"></p>
+      <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+      <link rel="icon" href="./image/favicon.ico" type="image/vnd.microsoft.icon">
+      <link rel="stylesheet" href="mdc.css">
+      <link rel="stylesheet" href="intro-animation.css">
+      <link rel="stylesheet" href="other-animation.css">
+   </head>
+   <body>
+      <div class="title">
+         <h1>Minecraft Damage Calc</h1>
+         <p>Minecraftのダメージ計算をします</p>
       </div>
-      <div class="defence defence-rm-animation">
-         <h2>防御側</h2>
+      <div class="calc">
+         <div class="offence offence-rm-animation">
+            <h2>攻撃側</h2>
+            <p>武器:<br>
+               <select class="rm-animation" name="weapon" id="weapon">
+                  <option value="wooden_sword">木の剣</option>
+                  <option value="stone_sword">石の剣</option>
+                  <option value="iron_sword">鉄の剣</option>
+                  <option value="goolden_sword">金の剣</option>
+                  <option value="diamond_sword">ダイヤの剣</option>
+                  <option value="none">素手またはその他</option>
+               </select>
+            </p>
+            <p>ダメージ増加エンチャントレベル:<br><input class="rm-animation" type="number" value="0" min="0" max="9999" name="sharpness" id="sharpness"></p>
+            <p>アンデッド特攻エンチャントレベル:<br><input class="rm-animation" type="number" value="0" min="0" max="9999" name="smite" id="smite"></p>
+            <p>虫特攻エンチャントレベル:<br><input class="rm-animation" type="number" value="0" min="0" max="9999" name="bane_of_arthropods" id="bane_of_arthropods"></p>
+            <p>攻撃力上昇レベル:<br><input class="rm-animation" type="number" value="0" min="0" max="9999" name="strength" id="strength"></p>
+         </div>
+         <div class="defence defence-rm-animation">
+            <h2>防御側</h2>
 
-         <p>相手エンティティ: <br>
-            <select class="rm-animation" name="enemy" id="enemy">
-               <option value="human">プレイヤー</option>
-               <option value="zombie">ゾンビ</option>
-               <option value="skeleton">スケルトン</option>
-               <option value="zombified_piglin">ゾンビピグリン</option>
-               <option value="husk">ハスク</option>
-               <option value="drowned">ドラウンド</option>
-               <option value="spider">蜘蛛</option>
-               <option value="cave_spider">毒蜘蛛</option>
-            </select>
-         </p>
-         <p>耐性レベル:<br><input class="rm-animation" type="number" value="0" min="0" max="255" name="resistance" id="resistance"></p>
-         <p>ヘルメット: <br>
-            <select class="rm-animation" name="helmet" id="helmet">
-               <option value="none">なし</option>
-               <option value="leather_helmet">革の帽子</option>
-               <option value="chainmail_helmet">チェーンのヘルメット</option>
-               <option value="iron_helmet">鉄のヘルメット</option>
-               <option value="goolden_helmet">金のヘルメット</option>
-               <option value="diamond_helmet">ダイヤモンドのヘルメット</option>
-            </select>
-         </p>
-         <p>ダメージ軽減エンチャントレベル:
-            <input class="rm-animation" name="helmet_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="helmet_protection">
-         </p>
+            <p>相手エンティティ: <br>
+               <select class="rm-animation" name="enemy" id="enemy">
+                  <option value="human">プレイヤー</option>
+                  <option value="zombie">ゾンビ</option>
+                  <option value="skeleton">スケルトン</option>
+                  <option value="zombified_piglin">ゾンビピグリン</option>
+                  <option value="husk">ハスク</option>
+                  <option value="drowned">ドラウンド</option>
+                  <option value="spider">蜘蛛</option>
+                  <option value="cave_spider">毒蜘蛛</option>
+               </select>
+            </p>
+            <p>耐性レベル:<br><input class="rm-animation" type="number" value="0" min="0" max="255" name="resistance" id="resistance"></p>
+            <p>ヘルメット: <br>
+               <select class="rm-animation" name="helmet" id="helmet">
+                  <option value="none">なし</option>
+                  <option value="leather_helmet">革の帽子</option>
+                  <option value="chainmail_helmet">チェーンのヘルメット</option>
+                  <option value="iron_helmet">鉄のヘルメット</option>
+                  <option value="goolden_helmet">金のヘルメット</option>
+                  <option value="diamond_helmet">ダイヤモンドのヘルメット</option>
+               </select>
+            </p>
+            <p>ダメージ軽減エンチャントレベル:
+               <input class="rm-animation" name="helmet_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="helmet_protection">
+            </p>
 
-         <p>チェストプレート: <br>
-            <select class="rm-animation" name="chestplate" id="chestplate">
-               <option value="none">なし</option>
-               <option value="leather_chestplate">革の上着</option>
-               <option value="chainmail_chestplate">チェーンのチェストプレート</option>
-               <option value="iron_chestplate">鉄のチェストプレート</option>
-               <option value="goolden_chestplate">金のチェストプレート</option>
-               <option value="diamond_chestplate">ダイヤモンドのチェストプレート</option>
-            </select>
-         </p>
-         <p>ダメージ軽減エンチャントレベル:
-            <input class="rm-animation" name="chestplate_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="chestplate_protection">
-         </p>
+            <p>チェストプレート: <br>
+               <select class="rm-animation" name="chestplate" id="chestplate">
+                  <option value="none">なし</option>
+                  <option value="leather_chestplate">革の上着</option>
+                  <option value="chainmail_chestplate">チェーンのチェストプレート</option>
+                  <option value="iron_chestplate">鉄のチェストプレート</option>
+                  <option value="goolden_chestplate">金のチェストプレート</option>
+                  <option value="diamond_chestplate">ダイヤモンドのチェストプレート</option>
+               </select>
+            </p>
+            <p>ダメージ軽減エンチャントレベル:
+               <input class="rm-animation" name="chestplate_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="chestplate_protection">
+            </p>
 
-         <p>レギンス: <br>
-            <select class="rm-animation" name="leggings" id="leggings">
-               <option value="none">なし</option>
-               <option value="leather_leggings">革のズボン</option>
-               <option value="chainmail_leggings">チェーンのレギンス</option>
-               <option value="iron_leggings">鉄のレギンス</option>
-               <option value="goolden_leggings">金のレギンス</option>
-               <option value="diamond_leggings">ダイヤモンドのレギンス</option>
-            </select>
-         </p>
-         <p>ダメージ軽減エンチャントレベル:
-            <input class="rm-animation" name="leggings_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="leggings_protection">
-         </p>
+            <p>レギンス: <br>
+               <select class="rm-animation" name="leggings" id="leggings">
+                  <option value="none">なし</option>
+                  <option value="leather_leggings">革のズボン</option>
+                  <option value="chainmail_leggings">チェーンのレギンス</option>
+                  <option value="iron_leggings">鉄のレギンス</option>
+                  <option value="goolden_leggings">金のレギンス</option>
+                  <option value="diamond_leggings">ダイヤモンドのレギンス</option>
+               </select>
+            </p>
+            <p>ダメージ軽減エンチャントレベル:
+               <input class="rm-animation" name="leggings_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="leggings_protection">
+            </p>
 
-         <p>ブーツ: <br>
-            <select class="rm-animation" name="boots" id="boots">
-               <option value="none">なし</option>
-               <option value="leather_boots">革のブーツ</option>
-               <option value="chainmail_boots">チェーンのブーツ</option>
-               <option value="iron_boots">鉄のブーツ</option>
-               <option value="goolden_boots">金のブーツ</option>
-               <option value="diamond_boots">ダイヤモンドのブーツ</option>
-            </select>
-         </p>
-         <p>ダメージ軽減エンチャントレベル:
-            <input class="rm-animation" name="boots_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="boots_protection">
-         </p>
+            <p>ブーツ: <br>
+               <select class="rm-animation" name="boots" id="boots">
+                  <option value="none">なし</option>
+                  <option value="leather_boots">革のブーツ</option>
+                  <option value="chainmail_boots">チェーンのブーツ</option>
+                  <option value="iron_boots">鉄のブーツ</option>
+                  <option value="goolden_boots">金のブーツ</option>
+                  <option value="diamond_boots">ダイヤモンドのブーツ</option>
+               </select>
+            </p>
+            <p>ダメージ軽減エンチャントレベル:
+               <input class="rm-animation" name="boots_protection" type="number" value="0" min="0" max="9999" maxlength="4" id="boots_protection">
+            </p>
+         </div>
       </div>
-   </div>
-   <div class="result result-rm-animation">
-      <button class="rm-animation" id="calc">計算する</button>
-      <div id="result_area"></div>
-   </div>
-   <script src="mdc.js"></script>
-   <script src="intro-animation.js"></script>
-</body>
+      <div class="result result-rm-animation">
+         <button class="rm-animation" id="calc">計算する</button>
+         <div id="result_area"></div>
+      </div>
+      <script src="mdc.js"></script>
+      <script src="intro-animation.js"></script>
+   </body>
 </html>

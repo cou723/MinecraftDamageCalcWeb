@@ -96,11 +96,18 @@ function Damage(damage,criticalDamage){
    this.criticalDamage = criticalDamage
 }
 
+/* 関数について
+中央関数：直説呼び出される関数。基本的には内部で数値をいじらない。
+中間関数：中央関数に呼び出される関数。変換関数、正規化関数を呼び出す。
+変換関数：上部にあるListを参照して文字を数値に変換する関数。DNSから思想を得た
+正規化関数：数値を実際関数で使える状態に変換する関数
+*/
+
 
 // 引数群
 
 /**
- * 攻撃側の中央関数
+ * 攻撃側の中間関数
  * @param {object} OffensePointCalcParam
  * @return {object} damage[damage,criticalDamage]
  */
@@ -121,7 +128,7 @@ function offensePointCalc(OffensePointCalcParam,enemy) {
 }
 
 /**
- * 武器を攻撃力に変換する変換属関数
+ * 武器を攻撃力に変換する変換関数
  * @param {string} weapon
  * @return {int} damage
  */
@@ -136,7 +143,7 @@ function weaponToInt(weapon) {
 }
 
 /**
- * 防御系の中央関数
+ * 防御系の中間関数
  * @param {object} DefensePointCalcParam
  * @return {object} defensePoints[defensePoint,toughness]
  */
@@ -252,7 +259,6 @@ function bootsToDefensePoints(armor) {
    return defensePoints;
 }
 
-
 /**
  * protectionを20以上の場合20にする正規化関数
  * @param {int} totalProtection
@@ -263,7 +269,7 @@ function transProtection(totalProteciton) {
 }
 
 /**
- * ダメージをprotectionを考慮してカットする関数
+ * ダメージをprotectionを考慮してカットする正規化関数
  * @param {int} totalProtectionLevel
  * @param {int} damage
  * @return {int} damage
@@ -277,7 +283,7 @@ function enchantCalc(totalProtectionLevel,damage) {
 }
 
 /**
- * 耐性レベルに応じてダメージをカットする関数
+ * 耐性レベルに応じてダメージをカットする正規化関数
  * @param {int} resistance
  * @param {int} damage
  * @return {int} damage
@@ -297,7 +303,7 @@ function _floor(damage) {
 }
 
 /**
- * ダメージを防具値の計算以外を行う正規化中央関数
+ * ダメージを防具値の計算以外を行う正規化中間関数
  * @param {object} subCalcParam
  * @param {int} damage
  * @return {int} damage
