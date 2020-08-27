@@ -1,6 +1,8 @@
 'use-strict';
 const calcButton = document.getElementById('calc');
 const resultArea = document.getElementById('result_area');
+const normalArea = document.getElementById('normal_area');
+const criticalArea = document.getElementById('critical_area');
 
 const smiteList = [
    'zombie',
@@ -8,6 +10,7 @@ const smiteList = [
    'husk',
    'zombified_piglin'
 ];
+
 const baneOfArthropodsList = [
    'spider',
    'cave_spider'
@@ -402,18 +405,31 @@ calcButton.onclick = () => {
    console.log(DefensePointCalcParam);
    console.log(enemy);
    console.log(SubCalcParam);
-   //描画
-   removeAllChildren(resultArea);
-   const header = document.createElement("h2");
-   header.innerText = '計算結果';
-   resultArea.appendChild(header);
 
    const totalDamage = mainCalc(
       offensePointCalc(OffensePointCalcParam,enemy),
       defencePointCalc(DefensePointCalcParam,enemy),
       SubCalcParam
    );
-   const paragraph = document.createElement('p');
-   resultArea.appendChild(paragraph);
-   paragraph.innerText = '貴方が相手に与えられるダメージは' + totalDamage.normal + 'で、criticalを出したときは' + totalDamage.critical + 'です';
+
+   //描画
+   removeAllChildren(resultArea);
+   const header = document.createElement("h2");
+   header.innerText = '計算結果';
+   resultArea.appendChild(header);
+
+   const totalDamageP = document.createElement('p');
+   totalDamageP.innerText = 'トータルダメージ: ' + totalDamage.normal ;
+   normalArea.appendChild(totalDamageP);
+
+   for (let i = 0; i < Math.floor(totalDamage.normal/2); i++) {
+      const heartImage = document.createElement('img');
+      heartImage.src = 'https://cou01000111.github.io/MinecraftDamageCalcWeb/image/heart_image.png';
+      normalArea.appendChild(heartImage);
+   }
+
+   const criticalDamageP = document.createElement('p');
+   const br = document.createElement('br');
+   criticalDamageP.innerText = 'クリティカルダメージ: ' + totalDamage.critical ;
+   criticalArea.appendChild(criticalDamageP);
 }

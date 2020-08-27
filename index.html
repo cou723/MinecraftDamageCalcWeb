@@ -2,7 +2,6 @@
 <html lang="ja">
    <head>
       <meta charset="UTF-8">
-      <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/article#">
       <title>Minecraft Damege Calc</title>
       <meta property="og:title" content="Minecraft-Damage-Calc-Web">
       <meta property="og:type" content="website">
@@ -116,7 +115,10 @@
       </div>
       <div class="result result-rm-animation">
          <button class="rm-animation" id="calc">計算する</button>
-         <div id="result_area"></div>
+         <div id="result_area">
+            <div id="normal_area"></div>
+            <div id="critical_area"></div>
+         </div>
       </div>
       <script src="mdc.js"></script>
       <script src="intro-animation.js"></script>
