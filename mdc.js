@@ -1,6 +1,6 @@
 'use-strict';
 const calcButton = document.getElementById('calc');
-const resultArea = document.getElementById('result_area');
+const resultAreaTitle = document.getElementById('result_area_title');
 const normalArea = document.getElementById('normal_area');
 const criticalArea = document.getElementById('critical_area');
 
@@ -358,6 +358,21 @@ function normalization(num,max,min) {
    return _num
 }
 
+/**
+ * ダメージを描画用に変換する関数
+ * 返り値は
+ * ・haert10_imageを描画する回数
+ * ・heart_imageを描画する回数
+ * ・harfheart_imageを描画する回数
+ * から構成されている配列
+ * @param {int} damage
+ * @return {array} [haert10_imageを描画する回数, heart_imageを描画する回数, harfheart_imageを描画する回数]
+ */
+function analysisDamage(damage) {
+   const _damage = [Math.floor(damage / 20), Math.floor(damage % 20 / 2), damage % 2];
+   return _damage;
+}
+
 calcButton.onclick = () => {
    //数値取得
    const _sharpnessLevel = document.getElementById('sharpness').value;
@@ -413,23 +428,73 @@ calcButton.onclick = () => {
    );
 
    //描画
-   removeAllChildren(resultArea);
-   const header = document.createElement("h2");
-   header.innerText = '計算結果';
-   resultArea.appendChild(header);
 
+   removeAllChildren(resultAreaTitle);
+   removeAllChildren(normalArea);
+   removeAllChildren(criticalArea);
+
+   const header = document.createElement('h2');
+   header.innerText = '計算結果' ;
+   resultAreaTitle.appendChild(header);
+
+   //文字の描画normal
    const totalDamageP = document.createElement('p');
    totalDamageP.innerText = 'トータルダメージ: ' + totalDamage.normal ;
    normalArea.appendChild(totalDamageP);
 
-   for (let i = 0; i < Math.floor(totalDamage.normal/2); i++) {
+   //ハート画像の描画normal
+   const parsedDamageNormal = analysisDamage(totalDamage.normal);
+   const imgBoxNormal = document.createElement('div');
+   normalArea.appendChild(imgBoxNormal);
+   imgBoxNormal.id = 'img_box';
+   for (let i = 0; i < parsedDamageNormal[0]; i++) {
       const heartImage = document.createElement('img');
-      heartImage.src = 'https://cou01000111.github.io/MinecraftDamageCalcWeb/image/heart_image.png';
-      normalArea.appendChild(heartImage);
+      heartImage.classList.add('heart');
+      heartImage.src = './image/heart10_image.png';
+      imgBoxNormal.appendChild(heartImage);
+   }
+   for (let i = 0; i < parsedDamageNormal[1]; i++) {
+      const heartImage = document.createElement('img');
+      heartImage.classList.add('heart');
+      heartImage.src = './image/heart_image.png';
+      imgBoxNormal.appendChild(heartImage);
+   }
+   if(parsedDamageNormal[2]){
+      const heartImage = document.createElement('img');
+      heartImage.classList.add('heart');
+      heartImage.src = './image/halfheart_image.png';
+      console.log(heartImage);
+      imgBoxNormal.appendChild(heartImage);
    }
 
+   //文字の描画critical
    const criticalDamageP = document.createElement('p');
    const br = document.createElement('br');
    criticalDamageP.innerText = 'クリティカルダメージ: ' + totalDamage.critical ;
    criticalArea.appendChild(criticalDamageP);
+
+   //ハート画像の描画critical
+   const parsedDamageCritical = analysisDamage(totalDamage.critical);
+   const imgBoxCritical = document.createElement('div');
+   criticalArea.appendChild(imgBoxCritical);
+   imgBoxCritical.id = 'img_box';
+   for (let i = 0; i < parsedDamageCritical[0]; i++) {
+      const heartImage = document.createElement('img');
+      heartImage.classList.add('heart');
+      heartImage.src = './image/heart10_image.png';
+      imgBoxCritical.appendChild(heartImage);
+   }
+   for (let i = 0; i < parsedDamageCritical[1]; i++) {
+      const heartImage = document.createElement('img');
+      heartImage.classList.add('heart');
+      heartImage.src = './image/heart_image.png';
+      imgBoxCritical.appendChild(heartImage);
+   }
+   if(parsedDamageCritical[2]){
+      const heartImage = document.createElement('img');
+      heartImage.classList.add('heart');
+      heartImage.src = './image/halfheart_image.png';
+      console.log(heartImage);
+      imgBoxCritical.appendChild(heartImage);
+   }
 }
