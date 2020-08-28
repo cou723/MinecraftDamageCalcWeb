@@ -1,4 +1,6 @@
 'use-strict';
+
+const FLOAT32MAX = 16777215;
 const calcButton = document.getElementById('calc');
 const resultAreaTitle = document.getElementById('result_area_title');
 const normalArea = document.getElementById('normal_area');
@@ -237,7 +239,7 @@ function leggingsToDefensePoints(armor) {
       }
    });
    if(_defensePoints == undefined){
-      console.log('[Error]:Not in the leggingsList')
+      console.log('[Error]:Not in the leggingsList');
    }
    let defensePoints = new DefensePoints(_defensePoints[0],_defensePoints[1]);
    return defensePoints;
@@ -272,6 +274,17 @@ function transProtection(totalProteciton) {
 }
 
 /**
+ * ダメージを防具値の計算以外を行う正規化中間関数
+ * @param {object} subCalcParam
+ * @param {int} damage
+ * @return {int} damage
+ */
+function subCalc(subCalcParam,_damage) {
+   const damage = Math.floor(resistanceCalc(subCalcParam.resistance,enchantCalc(subCalcParam.totalProtection,_damage)) * 100000) / 1000000;
+   return damage;
+}
+
+/**
  * ダメージをprotectionを考慮してカットする正規化関数
  * @param {int} totalProtectionLevel
  * @param {int} damage
@@ -292,27 +305,7 @@ function enchantCalc(totalProtectionLevel,damage) {
  * @return {int} damage
  */
 function resistanceCalc(resistance,damage) {
-   console.log();
    return damage * (1 - (resistance * 20) / 100);
-}
-
-/**
- * 数値を小数第六桁までにする正規化関数
- * @param {int} damage
- * @return {int} number
- */
-function _floor(damage) {
-   return Math.floor(damage * 1000000) / 1000000;
-}
-
-/**
- * ダメージを防具値の計算以外を行う正規化中間関数
- * @param {object} subCalcParam
- * @param {int} damage
- * @return {int} damage
- */
-function subCalc(subCalcParam,damage) {
-   return Math.floor(resistanceCalc(subCalcParam.resistance,enchantCalc(subCalcParam.totalProtection,damage)) * 1000000) / 1000000;
 }
 
 /**
@@ -347,7 +340,9 @@ function removeAllChildren(resultArea){
  * ・09などの数値を9に変換する(parseInt)
  * ・最大値、最小値を超えていた場合最大値または最小値を代入する
  * ・空白が送られてきた場合に0に置き換える
- * @param {int} number
+ * @param {int} num
+ * @param {int} max
+ * @param {int} min
  * @return {int} number
  */
 function normalization(num,max,min) {
