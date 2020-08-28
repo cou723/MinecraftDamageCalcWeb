@@ -19,57 +19,59 @@ const baneOfArthropodsList = [
 ];
 
 const weaponList = new Map([
-   ['none',1],
-   ['wooden_sword',4],
-   ['stone_sword',5],
-   ['iron_sword',6],
-   ['goolden_sword',4],
-   ['diamond_sword',7]
+   ['none', new Data('素手またはその他', 1)],
+   ['wooden_sword', new Data('木の剣', 4)],
+   ['stone_sword', new Data('石の剣', 5)],
+   ['iron_sword', new Data('鉄の剣', 6)],
+   ['goolden_sword', new Data('金の剣', 4)],
+   ['diamond_sword', new Data('ダイヤの剣', 7)]
 ]);
 
 const helmetList = new Map([
-   ['none',[0,0]],
-   ['leather_helmet',[1,0]],
-   ['chainmail_helmet',[2,0]],
-   ['iron_helmet',[2,0]],
-   ['goolden_helmet',[2,0]],
-   ['diamond_helmet',[3,2]]
+   ['none', new Data('なし', [0,0])],
+   ['leather_helmet', new Data('革の帽子', [1,0])],
+   ['chainmail_helmet', new Data('チェーンのヘルメット', [2,0])],
+   ['iron_helmet', new Data('鉄のヘルメット', [2,0])],
+   ['goolden_helmet', new Data('金のヘルメット', [2,0])],
+   ['diamond_helmet', new Data('ダイヤモンドのヘルメット', [3,2])],
 ]);
 
 const chestplateList = new Map([
-   ['none',[0,0]],
-   ['leather_chestplate',[3,0]],
-   ['chainmail_chestplate',[5,0]],
-   ['iron_chestplate',[6,0]],
-   ['goolden_chestplate',[5,0]],
-   ['diamond_chestplate',[8,2]]
+   ['none', new Data('なし', [0,0])],
+   ['leather_chestplate', new Data('革の上着', [3,0])],
+   ['chainmail_chestplate', new Data('チェーンのチェストプレート', [5,0])],
+   ['iron_chestplate', new Data('鉄のチェストプレート', [6,0])],
+   ['goolden_chestplate', new Data('金のチェストプレート', [5,0])],
+   ['diamond_chestplate', new Data('ダイヤモンドのチェストプレート', [8,2])],
 ]);
 
 const leggingsList = new Map([
-   ['none',[0,0]],
-   ['leather_leggings',[2,0]],
-   ['chainmail_leggings',[4,0]],
-   ['iron_leggings',[5,0]],
-   ['goolden_leggings',[3,0]],
-   ['diamond_leggings',[6,2]]
+   ['none', new Data('なし', [0,0])],
+   ['leather_leggings', new Data('革のズボン', [2,0])],
+   ['chainmail_leggings', new Data('チェーンのレギンス', [4,0])],
+   ['iron_leggings', new Data('鉄のレギンス', [5,0])],
+   ['goolden_leggings', new Data('金のレギンス', [3,0])],
+   ['diamond_leggings', new Data('ダイヤモンドのレギンス', [6,2])],
 ]);
 
 const bootsList = new Map([
-   ['none',[0,0]],
-   ['leather_boots',[1,0]],
-   ['chainmail_boots',[1,0]],
-   ['iron_boots',[2,0]],
-   ['goolden_boots',[4,0]],
-   ['diamond_boots',[7,2]]
+   ['none', new Data('なし', [0,0])],
+   ['leather_boots', new Data('革のブーツ', [1,0])],
+   ['chainmail_boots', new Data('チェーンのブーツ', [1,0])],
+   ['iron_boots', new Data('鉄のブーツ', [2,0])],
+   ['goolden_boots', new Data('金のブーツ', [4,0])],
+   ['diamond_boots', new Data('ダイヤモンドのブーツ', [7,2])],
 ]);
 
 const mobArmorList = new Map([
-   ['human',0],
-   ['zombie',2],
-   ['zombified_piglin',2],
-   ['husk',2],
-   ['drowned',2],
-   ['skeleton',0],
+   ['human', new Data('プレイヤー', 0)],
+   ['zombie', new Data('ゾンビ', 2)],
+   ['zombified_piglin', new Data('ゾンビピグリン', 2)],
+   ['husk', new Data('ハスク', 2)],
+   ['drowned', new Data('ドラウンド', 2)],
+   ['skeleton', new Data('スケルトン', 0)],
+   ['spider', new Data('蜘蛛', 0)],
+   ['cave_spider', new Data('毒蜘蛛', 0)],
 ]);
 // コンストラクタ群
 
@@ -101,15 +103,70 @@ function Damage(damage,criticalDamage){
    this.criticalDamage = criticalDamage
 }
 
+function Data(japaneseName,param) {
+   this.japaneseName = japaneseName,
+   this.param = param
+}
+
+//html書き換え
+
+const weaponSelect = document.getElementById('weapon');
+const enemySelect = document.getElementById('enemy');
+const helmetSelect = document.getElementById('helmet');
+const chestplateSelect = document.getElementById('chestplate');
+const leggingsSelect = document.getElementById('leggings');
+const bootsSelect = document.getElementById('boots');
+
+weaponList.forEach((value, key) => {
+   const option = document.createElement('option');
+   option.innerText = value.japaneseName;
+   option.value = key;
+   weaponSelect.appendChild(option);
+});
+
+mobArmorList.forEach((value, key) => {
+   const option = document.createElement('option');
+   option.innerText = value.japaneseName;
+   option.value = key;
+   enemySelect.appendChild(option);
+});
+
+helmetList.forEach((value, key) => {
+   const option = document.createElement('option');
+   option.innerText = value.japaneseName;
+   option.value = key;
+   helmetSelect.appendChild(option);
+});
+
+chestplateList.forEach((value, key) => {
+   const option = document.createElement('option');
+   option.innerText = value.japaneseName;
+   option.value = key;
+   chestplateSelect.appendChild(option);
+});
+
+leggingsList.forEach((value, key) => {
+   const option = document.createElement('option');
+   option.innerText = value.japaneseName;
+   option.value = key;
+   leggingsSelect.appendChild(option);
+});
+
+bootsList.forEach((value, key) => {
+   const option = document.createElement('option');
+   option.innerText = value.japaneseName;
+   option.value = key;
+   bootsSelect.appendChild(option);
+});
+
+//ここからロジック
+
 /* 関数について
 中央関数：直説呼び出される関数。基本的には内部で数値をいじらない。
 中間関数：中央関数に呼び出される関数。変換関数、正規化関数を呼び出す。
 変換関数：上部にあるListを参照して文字を数値に変換する関数。DNSから思想を得た
 正規化関数：数値を実際関数で使える状態に変換する関数
 */
-
-
-// 引数群
 
 /**
  * 攻撃側の中間関数
@@ -141,7 +198,8 @@ function weaponToInt(weapon) {
    let returnParam;
    weaponList.forEach((value, key) => {
       if(key === weapon){
-         returnParam = value;
+         returnParam = value.param;
+         console.log(value.param);
       }
    });
    return returnParam;
@@ -178,7 +236,7 @@ function enemyToDefensePoints(enemy) {
    let _defensePoints;
    mobArmorList.forEach((value, key) => {
       if(key == enemy.enemy){
-         _defensePoints = value;
+         _defensePoints = value.param;
       }
    });
    if(_defensePoints == undefined){
@@ -197,11 +255,11 @@ function helmetToDefensePoints(armor) {
    let _defensePoints;
    helmetList.forEach((value, key) => {
       if(key === armor){
-         _defensePoints = value;
+         _defensePoints = value.param;
       }
    });
    if(_defensePoints == undefined){
-      console.log('[Error]:Not in the helmetList')
+      console.log('[Error]:Not in the helmetList');
    }
    let defensePoints = new DefensePoints(_defensePoints[0],_defensePoints[1]);
    return defensePoints;
@@ -216,11 +274,11 @@ function chestplateToDefensePoints(armor) {
    let _defensePoints;
    chestplateList.forEach((value, key) => {
       if(key === armor){
-         _defensePoints = value;
+         _defensePoints = value.param;
       }
    });
    if(_defensePoints == undefined){
-      console.log('[Error]:Not in the chestplateList')
+      console.log('[Error]:Not in the chestplateList');
    }
    let defensePoints = new DefensePoints(_defensePoints[0],_defensePoints[1]);
    return defensePoints;
@@ -235,7 +293,7 @@ function leggingsToDefensePoints(armor) {
    let _defensePoints;
    leggingsList.forEach((value, key) => {
       if(key === armor){
-         _defensePoints = value;
+         _defensePoints = value.param;
       }
    });
    if(_defensePoints == undefined){
@@ -254,11 +312,11 @@ function bootsToDefensePoints(armor) {
    let _defensePoints;
    bootsList.forEach((value, key) => {
       if(key === armor){
-         _defensePoints = value;
+         _defensePoints = value.param;
       }
    });
    if(_defensePoints == undefined){
-      console.log('[Error]:Not in the bootsList')
+      console.log('[Error]:Not in the bootsList');
    }
    let defensePoints = new DefensePoints(_defensePoints[0],_defensePoints[1]);
    return defensePoints;
@@ -280,7 +338,7 @@ function transProtection(totalProteciton) {
  * @return {int} damage
  */
 function subCalc(subCalcParam,_damage) {
-   const damage = Math.floor(resistanceCalc(subCalcParam.resistance,enchantCalc(subCalcParam.totalProtection,_damage)) * 100000) / 1000000;
+   const damage = Math.floor(resistanceCalc(subCalcParam.resistance,enchantCalc(subCalcParam.totalProtection,_damage)) * 100000) / 100000;
    return damage;
 }
 
