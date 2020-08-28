@@ -405,7 +405,7 @@ function removeAllChildren(resultArea){
  */
 function normalization(num,max,min) {
    let _num = parseInt(num);
-   if(_num == "")_num = 0;
+   if(_num == NaN)_num = 0;
    if(_num < min)_num = min;
    else if(_num > max)_num = max;
    return _num
