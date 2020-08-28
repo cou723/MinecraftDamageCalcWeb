@@ -414,12 +414,12 @@ function normalization(num,max,min) {
 /**
  * ダメージを描画用に変換する関数
  * 返り値は
- * ・haert10_imageを描画する回数
- * ・heart_imageを描画する回数
- * ・harfheart_imageを描画する回数
+ * ・haert10を描画する回数
+ * ・heartを描画する回数
+ * ・harfheartを描画する回数
  * から構成されている配列
  * @param {int} damage
- * @return {array} [haert10_imageを描画する回数, heart_imageを描画する回数, harfheart_imageを描画する回数]
+ * @return {array} [haert10を描画する回数, heartを描画する回数, harfheartを描画する回数]
  */
 function analysisDamage(damage) {
    const _damage = [Math.floor(damage / 20), Math.floor(damage % 20 / 2), damage % 2];
@@ -503,19 +503,19 @@ calcButton.onclick = () => {
    for (let i = 0; i < parsedDamageNormal[0]; i++) {
       const heartImage = document.createElement('img');
       heartImage.classList.add('heart');
-      heartImage.src = './image/heart10_image.png';
+      heartImage.src = './image/heart10.png';
       imgBoxNormal.appendChild(heartImage);
    }
    for (let i = 0; i < parsedDamageNormal[1]; i++) {
       const heartImage = document.createElement('img');
       heartImage.classList.add('heart');
-      heartImage.src = './image/heart_image.png';
+      heartImage.src = './image/heart.png';
       imgBoxNormal.appendChild(heartImage);
    }
    if(parsedDamageNormal[2]){
       const heartImage = document.createElement('img');
       heartImage.classList.add('heart');
-      heartImage.src = './image/halfheart_image.png';
+      heartImage.src = './image/halfheart.png';
       console.log(heartImage);
       imgBoxNormal.appendChild(heartImage);
    }
@@ -534,19 +534,19 @@ calcButton.onclick = () => {
    for (let i = 0; i < parsedDamageCritical[0]; i++) {
       const heartImage = document.createElement('img');
       heartImage.classList.add('heart');
-      heartImage.src = './image/heart10_image.png';
+      heartImage.src = './image/heart10.png';
       imgBoxCritical.appendChild(heartImage);
    }
    for (let i = 0; i < parsedDamageCritical[1]; i++) {
       const heartImage = document.createElement('img');
       heartImage.classList.add('heart');
-      heartImage.src = './image/heart_image.png';
+      heartImage.src = './image/heart.png';
       imgBoxCritical.appendChild(heartImage);
    }
    if(parsedDamageCritical[2]){
       const heartImage = document.createElement('img');
       heartImage.classList.add('heart');
-      heartImage.src = './image/halfheart_image.png';
+      heartImage.src = './image/halfheart.png';
       console.log(heartImage);
       imgBoxCritical.appendChild(heartImage);
    }
