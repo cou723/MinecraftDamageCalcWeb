@@ -1,49 +1,49 @@
 'use strict';
-let flag = true;
+let isNormalIntroAnimation = true;
 const rm_animation = document.querySelectorAll('.rm-animation');
 
 rm_animation[0].addEventListener("animationend",() => {
-   if(flag){
+   if(isNormalIntroAnimation){
       for (let i = 0; i < rm_animation.length; i++) {
          // console.log(rm_animation[i]);
          rm_animation[i].classList.remove('rm-animation');
       }
-      flag = false;
+      isNormalIntroAnimation = false;
    }
 });
 
-let flag_of = true;
+let isOffenceIntroAnimation = true;
 const offence_rm_animation = document.querySelector('.offence-rm-animation');
 console.log(offence_rm_animation);
 
 offence_rm_animation.addEventListener("animationend",() => {
-   if(flag_of){
+   if(isOffenceIntroAnimation){
        console.log(offence_rm_animation);
       offence_rm_animation.classList.remove('offence-rm-animation');
-      flag_of = false;
+      isOffenceIntroAnimation = false;
    }
 });
 
-let flag_de = true;
+let isDefenseIntroAnimation = true;
 const defence_rm_animation = document.querySelector('.defence-rm-animation');
 console.log(defence_rm_animation);
 
 defence_rm_animation.addEventListener("animationend",() => {
-   if(flag_de){
+   if(isDefenseIntroAnimation){
        console.log(defence_rm_animation);
       defence_rm_animation.classList.remove('defence-rm-animation');
-      flag_de = false;
+      isDefenseIntroAnimation = false;
    }
 });
 
-let flag_re = true;
+let isResultIntroAnimation = true;
 const result_rm_animation = document.querySelector('.result-rm-animation');
 console.log(result_rm_animation);
 
 result_rm_animation.addEventListener("animationend",() => {
-   if(flag_re){
+   if(isResultIntroAnimation){
        console.log(result_rm_animation);
       result_rm_animation.classList.remove('result-rm-animation');
-      flag_re = false;
+      isResultIntroAnimation = false;
    }
 });

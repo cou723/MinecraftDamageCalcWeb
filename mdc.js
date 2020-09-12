@@ -76,17 +76,13 @@ const mobArmorList = new Map([
 // コンストラクタ群
 
 function Enemy(enemy){
-   var isUndead = false;
-   var isInsect = false;
+   let isUndead = false;
+   let isInsect = false;
    smiteList.forEach((listEnemy) => {
-      if(enemy == listEnemy){
-         isUndead = true;
-      }
+      isUndead = (enemy == listEnemy);
    });
    baneOfArthropodsList.forEach((listEnemy) => {
-      if(enemy == listEnemy){
-         isInsect = true;
-      }
+      isInsect = (enemy == listEnemy);
    });
    this.enemy = enemy;
    this.isUndead = isUndead;
@@ -174,16 +170,16 @@ bootsList.forEach((value, key) => {
  * @return {object} damage[damage,criticalDamage]
  */
 function offensePointCalc(OffensePointCalcParam,enemy) {
-   var damage = new Damage(
+   let damage = new Damage(
       weaponToInt(OffensePointCalcParam.selectedWeapon),
       weaponToInt(OffensePointCalcParam.selectedWeapon) * 1.5
    )
-   var addDamageByEnchant = ((OffensePointCalcParam.sharpnessLevel > 0) ? 0.5 + OffensePointCalcParam.sharpnessLevel * 0.5 : 0) +
+   let addDamageByEnchant = ((OffensePointCalcParam.sharpnessLevel > 0) ? 0.5 + OffensePointCalcParam.sharpnessLevel * 0.5 : 0) +
    (enemy.isUndead ? OffensePointCalcParam.smiteLevel * 2.5 : 0) +
    (enemy.isInsect ? OffensePointCalcParam.baneOfArthropods * 2.5 : 0);
    damage.damage += addDamageByEnchant;
    damage.criticalDamage += addDamageByEnchant;
-   var addDamageByPotion = (OffensePointCalcParam.strength * 3);
+   let addDamageByPotion = (OffensePointCalcParam.strength * 3);
    damage.damage += addDamageByPotion;
    damage.criticalDamage += addDamageByPotion;
    return damage
@@ -405,10 +401,13 @@ function removeAllChildren(resultArea){
  */
 function normalization(num,max,min) {
    let _num = parseInt(num);
-   if(_num == NaN)_num = 0;
-   if(_num < min)_num = min;
-   else if(_num > max)_num = max;
-   return _num
+   _num =  (_num == NaN) ? 0 : _num;
+   if(_num < min){
+      _num = min;
+   }else if(_num > max){
+      _num = max;
+   }
+   return _num;
 }
 
 /**
