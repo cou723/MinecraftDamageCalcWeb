@@ -333,9 +333,14 @@ function transProtection(totalProteciton) {
  * @param {int} damage
  * @return {int} damage
  */
-function subCalc(subCalcParam,_damage) {
-   const damage = Math.floor(resistanceCalc(subCalcParam.resistance,enchantCalc(subCalcParam.totalProtection,_damage)) * 100000) / 100000;
-   return damage;
+function subCalc(subCalcParam,damageBeforeConv) {
+   //エンチャントの効果によってダメージを変化させる
+   damageBeforeConv = enchantCalc(subCalcParam.totalProtection,damageBeforeConv);
+   //耐性レベルに応じてダメージを変化させる
+   damageBeforeConv = resistanceCalc(subCalcParam.resistance,damageBeforeConv);
+   //小数第6位以下をカットする
+   damageBeforeConv = Math.floor(damageBeforeConv * 100000) / 100000;
+   return damageAfterConv;
 }
 
 /**
@@ -369,10 +374,12 @@ function resistanceCalc(resistance,damage) {
  * @return {int} totalDamage[normal,critical]
  */
 function mainCalc(damage,defensePoints,subCalcParam) {
+   //ダメージ、防御値、防具強度によって基礎ダメージを定める
    let _totalDamage = {
       normal: damage.damage * (1 - (Math.min(20, Math.max(defensePoints.defensePoint / 5, defensePoints.defensePoint - damage.damage / (2 + defensePoints.toughness / 4)))) / 25),
       critical: damage.criticalDamage * (1 - (Math.min(20, Math.max(defensePoints.defensePoint / 5, defensePoints.defensePoint - damage.criticalDamage / (2 + defensePoints.toughness / 4)))) / 25)};
 
+   //上記の三要素以外のものを使ってダメージを加工する
    let totalDamage = {
       normal: subCalc(subCalcParam,_totalDamage.normal),
       critical: subCalc(subCalcParam,_totalDamage.critical)
