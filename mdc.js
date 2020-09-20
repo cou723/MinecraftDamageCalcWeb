@@ -24,7 +24,8 @@ const weaponList = new Map([
    ['stone_sword', new Data('石の剣', 5)],
    ['iron_sword', new Data('鉄の剣', 6)],
    ['goolden_sword', new Data('金の剣', 4)],
-   ['diamond_sword', new Data('ダイヤの剣', 7)]
+   ['diamond_sword', new Data('ダイヤの剣', 7)],
+   ['diamond_sword', new Data('弓', NaN)]
 ]);
 
 const helmetList = new Map([
@@ -340,6 +341,7 @@ function subCalc(subCalcParam,damageBeforeConv) {
    damageBeforeConv = resistanceCalc(subCalcParam.resistance,damageBeforeConv);
    //小数第6位以下をカットする
    damageBeforeConv = Math.floor(damageBeforeConv * 100000) / 100000;
+   damageAfterConv = damageBeforeConv;
    return damageAfterConv;
 }
 
