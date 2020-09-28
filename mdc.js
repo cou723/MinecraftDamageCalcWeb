@@ -25,8 +25,10 @@ const weaponList = new Map([
    ['iron_sword', new Data('鉄の剣', 6)],
    ['goolden_sword', new Data('金の剣', 4)],
    ['diamond_sword', new Data('ダイヤの剣', 7)],
-   ['diamond_sword', new Data('弓', NaN)]
+   ['bow', new Data('弓', 2)]
 ]);
+
+const bowList = new Array(['bow']);
 
 const helmetList = new Map([
    ['none', new Data('なし', [0,0])],
@@ -156,6 +158,10 @@ bootsList.forEach((value, key) => {
    bootsSelect.appendChild(option);
 });
 
+calcButton.onChange = () => {
+
+}
+
 //ここからロジック
 
 /* 関数について
@@ -173,17 +179,56 @@ bootsList.forEach((value, key) => {
 function offensePointCalc(OffensePointCalcParam,enemy) {
    let damage = new Damage(
       weaponToInt(OffensePointCalcParam.selectedWeapon),
-      weaponToInt(OffensePointCalcParam.selectedWeapon) * 1.5
+      weaponToInt(OffensePointCalcParam.selectedWeapon)
    )
-   let addDamageByEnchant = ((OffensePointCalcParam.sharpnessLevel > 0) ? 0.5 + OffensePointCalcParam.sharpnessLevel * 0.5 : 0) +
-   (enemy.isUndead ? OffensePointCalcParam.smiteLevel * 2.5 : 0) +
-   (enemy.isInsect ? OffensePointCalcParam.baneOfArthropods * 2.5 : 0);
-   damage.damage += addDamageByEnchant;
-   damage.criticalDamage += addDamageByEnchant;
-   let addDamageByPotion = (OffensePointCalcParam.strength * 3);
-   damage.damage += addDamageByPotion;
-   damage.criticalDamage += addDamageByPotion;
-   return damage
+   if(isBow(OffensePointCalcParam.selectedWeapon)){
+      //エンチャント関係の処理
+      //矢のdamageは射撃ダメージ増加によって1増えるので
+      damage.damage += OffensePointCalcParam.power;
+      damage.criticalDamage += OffensePointCalcParam.power;
+
+      //ここのmotionの平均値はcsvLog2の時の検証時のmotionの平均値を取っておく
+      const motionAve = 2.739193059;
+
+      damage.damage *= motionAve;
+      damage.criticalDamage *= motionAve;
+
+      damage.damage = Math.ceil(damage.damage);
+      damage.criticalDamage = Math.ceil(damage.criticalDamage * 1.5);
+      return damage;
+   } else {
+      damage.criticalDamage *= 1.5;
+      //エンチャント関係の処理
+      let addDamageByEnchant = ((OffensePointCalcParam.sharpnessLevel > 0) ? 0.5 + OffensePointCalcParam.sharpnessLevel * 0.5 : 0) +
+      (enemy.isUndead ? OffensePointCalcParam.smiteLevel * 2.5 : 0) +
+      (enemy.isInsect ? OffensePointCalcParam.baneOfArthropods * 2.5 : 0);
+      damage.damage += addDamageByEnchant;
+      damage.criticalDamage += addDamageByEnchant;
+
+      //ポーション関係の処理
+      let addDamageByPotion = (OffensePointCalcParam.strength * 3);
+      damage.damage += addDamageByPotion;
+      damage.criticalDamage += addDamageByPotion;
+
+      return damage;
+   }
+
+}
+
+/**
+ * 選択された武器が弓系の武器かどうかを調べる関数
+ * @param {string} weapon
+ * @return {bool} isBow
+ */
+
+function isBow(weapon){
+   ans = false;
+   console.log(weapon);
+   bowList.forEach((value) => {
+      if(value == weapon)ans = true;
+   })
+   console.log(ans);
+   return ans;
 }
 
 /**
@@ -336,7 +381,7 @@ function transProtection(totalProteciton) {
  */
 function subCalc(subCalcParam,damageBeforeConv) {
    //エンチャントの効果によってダメージを変化させる
-   damageBeforeConv = enchantCalc(subCalcParam.totalProtection,damageBeforeConv);
+   damageBeforeConv = enchantCutDamageCalc(subCalcParam.totalProtection,damageBeforeConv);
    //耐性レベルに応じてダメージを変化させる
    damageBeforeConv = resistanceCalc(subCalcParam.resistance,damageBeforeConv);
    //小数第6位以下をカットする
@@ -351,7 +396,7 @@ function subCalc(subCalcParam,damageBeforeConv) {
  * @param {int} damage
  * @return {int} damage
  */
-function enchantCalc(totalProtectionLevel,damage) {
+function enchantCutDamageCalc(totalProtectionLevel,damage) {
    if(totalProtectionLevel == 0){
       return damage;
    }else {
@@ -376,11 +421,13 @@ function resistanceCalc(resistance,damage) {
  * @return {int} totalDamage[normal,critical]
  */
 function mainCalc(damage,defensePoints,subCalcParam) {
+   console.log(damage);
    //ダメージ、防御値、防具強度によって基礎ダメージを定める
    let _totalDamage = {
       normal: damage.damage * (1 - (Math.min(20, Math.max(defensePoints.defensePoint / 5, defensePoints.defensePoint - damage.damage / (2 + defensePoints.toughness / 4)))) / 25),
       critical: damage.criticalDamage * (1 - (Math.min(20, Math.max(defensePoints.defensePoint / 5, defensePoints.defensePoint - damage.criticalDamage / (2 + defensePoints.toughness / 4)))) / 25)};
 
+   console.log(_totalDamage);
    //上記の三要素以外のものを使ってダメージを加工する
    let totalDamage = {
       normal: subCalc(subCalcParam,_totalDamage.normal),
@@ -436,11 +483,13 @@ function analysisDamage(damage) {
 
 calcButton.onclick = () => {
    //数値取得
+   const _power = document.getElementById('power').value;
    const _sharpnessLevel = document.getElementById('sharpness').value;
    const _smiteLevel = document.getElementById('smite').value;
    const _baneOfArthropods = document.getElementById('bane_of_arthropods').value;
    const _strength = document.getElementById('strength').value;
    const OffensePointCalcParam = {
+      power: normalization(_power, 9999, 0),
       selectedWeapon: document.getElementById('weapon').value,
       sharpnessLevel: normalization(_sharpnessLevel, 9999, 0),
       smiteLevel: normalization(_smiteLevel, 9999, 0),
@@ -477,10 +526,12 @@ calcButton.onclick = () => {
 
    const enemy = new Enemy(document.getElementById('enemy').value);
 
+   /*
    console.log(OffensePointCalcParam);
    console.log(DefensePointCalcParam);
    console.log(enemy);
    console.log(SubCalcParam);
+   */
 
    const totalDamage = mainCalc(
       offensePointCalc(OffensePointCalcParam,enemy),
@@ -500,7 +551,8 @@ calcButton.onclick = () => {
 
    //文字の描画normal
    const totalDamageP = document.createElement('p');
-   totalDamageP.innerText = 'トータルダメージ: ' + totalDamage.normal ;
+   const normalText = isBow(OffensePointCalcParam.selectedWeapon)? '最小値 : ' : 'トータルダメージ: ';
+   totalDamageP.innerText = normalText + totalDamage.normal ;
    normalArea.appendChild(totalDamageP);
 
    //ハート画像の描画normal
@@ -530,8 +582,8 @@ calcButton.onclick = () => {
 
    //文字の描画critical
    const criticalDamageP = document.createElement('p');
-   const br = document.createElement('br');
-   criticalDamageP.innerText = 'クリティカルダメージ: ' + totalDamage.critical ;
+   const criticalText = isBow(OffensePointCalcParam.selectedWeapon)? '最大値 : ' : 'クリティカルダメージ: ';
+   criticalDamageP.innerText = criticalText + totalDamage.critical ;
    criticalArea.appendChild(criticalDamageP);
 
    //ハート画像の描画critical

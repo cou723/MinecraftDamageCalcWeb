@@ -1,20 +1,20 @@
 
 .title {
    animation-name: fade-in;
-   animation-duration: 0.5s;
+   animation-duration: 0.2s;
    animation-iteration-count: 1;
 }
 
 .offence-rm-animation {
    animation-name: fade-in-shadow;
-   animation-duration: 0.5s;
+   animation-duration: 0.2s;
    animation-fill-mode: both;
    animation-iteration-count: 1;
 }
 
 .defence-rm-animation {
    animation-name: fade-in-shadow;
-   animation-duration: 0.5s;
+   animation-duration: 0.2s;
    animation-fill-mode: both;
    animation-iteration-count: 1;
    animation-delay: 0.2s;
@@ -22,7 +22,7 @@
 
 .result-rm-animation {
    animation-name: fade-in-shadow;
-   animation-duration: 0.5s;
+   animation-duration: 0.2s;
    animation-fill-mode: both;
    animation-iteration-count: 1;
    animation-delay: 0.4s;
@@ -31,7 +31,7 @@
 
 .rm-animation {
    animation-name: fade-in;
-   animation-duration: 0.5s;
+   animation-duration: 0.2s;
    animation-delay: 0.6s;
    animation-fill-mode: both;
    animation-iteration-count: 1;
@@ -39,7 +39,7 @@
 
 p {
    animation-name: fade-in;
-   animation-duration: 0.5s;
+   animation-duration: 0.2s;
    animation-delay: 0.4s;
    animation-fill-mode: both;
    animation-iteration-count: 1;
@@ -47,7 +47,7 @@ p {
 
 h2 {
    animation-name: fade-in-from-side;
-   animation-duration: 0.5s;
+   animation-duration: 0.2s;
    animation-delay: 0.2s;
    animation-fill-mode: both;
    animation-iteration-count: 1;
@@ -55,7 +55,7 @@ h2 {
 
 .heart {
    animation-name: fade-in-from-side;
-   animation-duration: 0.5s;
+   animation-duration: 0.2s;
    animation-delay: 0.6s;
    animation-fill-mode: both;
    animation-iteration-count: 1;
