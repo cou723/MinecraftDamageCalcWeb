@@ -82,10 +82,14 @@ function Enemy(enemy){
    let isUndead = false;
    let isInsect = false;
    smiteList.forEach((listEnemy) => {
-      isUndead = (enemy == listEnemy);
+      if(enemy == listEnemy){
+         isUndead = true;
+      }
    });
    baneOfArthropodsList.forEach((listEnemy) => {
-      isInsect = (enemy == listEnemy);
+      if(enemy == listEnemy){
+         isInsect = true;
+      }
    });
    this.enemy = enemy;
    this.isUndead = isUndead;
@@ -177,6 +181,7 @@ calcButton.onChange = () => {
  * @return {object} damage[damage,criticalDamage]
  */
 function offensePointCalc(OffensePointCalcParam,enemy) {
+   console.log(enemy);
    let damage = new Damage(
       weaponToInt(OffensePointCalcParam.selectedWeapon),
       weaponToInt(OffensePointCalcParam.selectedWeapon)
@@ -227,7 +232,6 @@ function isBow(weapon){
    bowList.forEach((value) => {
       if(value == weapon)ans = true;
    })
-   console.log(ans);
    return ans;
 }
 
