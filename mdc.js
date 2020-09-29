@@ -198,8 +198,8 @@ function offensePointCalc(OffensePointCalcParam,enemy) {
       damage.damage *= motionAve;
       damage.criticalDamage *= motionAve;
 
-      damage.damage = Math.ceil(damage.damage);
-      damage.criticalDamage = Math.ceil(damage.criticalDamage * 1.5);
+      damage.damage = Math.floor(damage.damage) + 1;
+      damage.criticalDamage = Math.floor(damage.criticalDamage * 1.5) + 1;
       return damage;
    } else {
       damage.criticalDamage *= 1.5;
