@@ -184,22 +184,20 @@ function offensePointCalc(OffensePointCalcParam,enemy) {
    console.log(enemy);
    let damage = new Damage(
       weaponToInt(OffensePointCalcParam.selectedWeapon),
-      weaponToInt(OffensePointCalcParam.selectedWeapon)
+      0
    )
    if(isBow(OffensePointCalcParam.selectedWeapon)){
       //エンチャント関係の処理
       //矢のdamageは射撃ダメージ増加によって1増えるので
       damage.damage += OffensePointCalcParam.power;
-      damage.criticalDamage += OffensePointCalcParam.power;
 
       //ここのmotionの平均値はcsvLog2の時の検証時のmotionの平均値を取っておく
       const motionAve = 2.739193059;
 
       damage.damage *= motionAve;
-      damage.criticalDamage *= motionAve;
 
-      damage.damage = Math.floor(damage.damage) + 1;
-      damage.criticalDamage = Math.floor(damage.criticalDamage * 1.5) + 1;
+      damage.damage = Math.ceil(damage.damage);
+      damage.criticalDamage = Math.ceil(damage.damage * 1.5) + 1;
       return damage;
    } else {
       damage.criticalDamage *= 1.5;
