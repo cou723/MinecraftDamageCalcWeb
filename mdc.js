@@ -200,7 +200,7 @@ function offensePointCalc(OffensePointCalcParam,enemy) {
       damage.criticalDamage = Math.ceil(damage.damage * 1.5) + 1;
       return damage;
    } else {
-      damage.criticalDamage *= 1.5;
+      damage.criticalDamage = 1.5 * damage.damage;
       //エンチャント関係の処理
       let addDamageByEnchant = ((OffensePointCalcParam.sharpnessLevel > 0) ? 0.5 + OffensePointCalcParam.sharpnessLevel * 0.5 : 0) +
       (enemy.isUndead ? OffensePointCalcParam.smiteLevel * 2.5 : 0) +
