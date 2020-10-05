@@ -100,7 +100,7 @@ function offensePointCalc(OffensePointCalcParam,enemy) {
  */
 
 function isBow(weapon){
-   ans = false;
+   var ans = false;
    console.log(weapon);
    bowList.forEach((value) => {
       if(value == weapon)ans = true;
@@ -263,7 +263,7 @@ function subCalc(subCalcParam,damageBeforeConv) {
    damageBeforeConv = resistanceCalc(subCalcParam.resistance,damageBeforeConv);
    //小数第6位以下をカットする
    damageBeforeConv = Math.floor(damageBeforeConv * 100000) / 100000;
-   damageAfterConv = damageBeforeConv;
+   var damageAfterConv = damageBeforeConv;
    return damageAfterConv;
 }
 
