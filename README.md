@@ -6,3 +6,6 @@ minecraftのダメージを計算するwebサイトです
 + Visual Studio Code
 + Minecraft 1.14.4
 + Minecraft 1.16.3(制作時最新バージョン)
+
+## 弓のダメージ計算について
+どうやらminecraftは弓のダメージ計算をentityのmotionを使って判定しているようなので、弓のダメージ計算に限り数値は正確なものにはなりません
