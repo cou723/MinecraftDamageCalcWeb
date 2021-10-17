@@ -1,7 +1,7 @@
 # MinecraftDamageCalcWeb
 minecraftのダメージを計算するwebサイトです
 ふざけた数値を入力しても一応内部で数値を変換しています
-https://cou01000111.github.io/MinecraftDamageCalcWeb/
+https://cou723.github.io/MinecraftDamageCalcWeb/
 
 ## 開発環境
 + Visual Studio Code
